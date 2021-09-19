@@ -1,4 +1,8 @@
+﻿<<<<<<< HEAD
+﻿
+=======
 Equipe alteração 
+>>>>>>> e078e998a0fc4337c37ac6fe09296f587256ab60
 # Trilhando-caminhos
 
 ## Projeto de conclusão do curso de back-end - TOTI
@@ -18,7 +22,7 @@ Tecnologias usadas
   - [x] Listar todas as trilhas
   - [ ] Listar trilhhas espefíficas
 
-
+TESTE
 
 
 ### Pré-requisitos
