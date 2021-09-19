@@ -1,3 +1,4 @@
+Ruth
 # Trilhando-caminhos
 
 ## Projeto de conclusão do curso de back-end - TOTI
