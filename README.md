@@ -55,7 +55,7 @@ nosso servidor com o banco de dados</p>
  <a href="https://www.npmjs.com/package/nodemon">Nodemon</a>
  </h1>
  
- <p align="center">usamos esta ferramenta que ajuda a desenvolver aplicativos baseados em node.js, reiniciando automaticamente o aplicativo de nó quando mudanças de arquivo no diretório são detectadas, foi salva como dependência do desenvolvedor</p>
+ <p align="center">usamos esta ferramenta que, ajuda a desenvolver aplicativos baseados em node.js, reiniciando automaticamente o aplicativo de nó quando mudanças de arquivo no diretório são detectadas, foi salva como dependência do desenvolvedor</p>
  
  ### Funcionalidades da api
   - [x] Listar todas as trilhas
