@@ -33,7 +33,7 @@
         "tags": [
           "Trilhas"
         ],
-        "summary": "Criar uma nova trilha",
+        "summary": "Adicionar",
         "description": "",
         "consumes": [
           "application/json"
