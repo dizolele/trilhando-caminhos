@@ -1,0 +1,605 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentação da API trilhando caminho",
+    "version": "1.0.0",
+    "title": "Trilhando Caminho",
+    "contact": {
+      "email": "grupo3@gmail.com"
+    }
+  },
+  "host": "localhost:6600",
+  "basePath": "/trilhando",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/allTrilhas": {
+      "get": {
+        "tags": [
+          "Trilhas"
+        ],
+        "summary": "Mostrando todas as trilhas",
+        "description": "EndPoint responsável por mostrar todas as trilhas existentes no banco",
+        "operationId": "allTrilhas",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "404": {
+            "description": "Trilha não cadastrada!"
+          },
+          "200": {
+            "description": "Retorna todas as trilhas",
+            "schema": {
+              "$ref": "#/definitions/Trilhas"
+            }
+          },
+          "403": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/byTrilha/{id}": {
+      "get": {
+        "tags": [
+          "Trilhas"
+        ],
+        "summary": "Mostrando trilhas by id",
+        "description": "EndPoint responsáel por mostrar  as trilhas existentes no banco by id",
+        "operationId": "byTrilha",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id da trilha que será localizada"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Trilha não cadastrada!"
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Trilhas"
+            }
+          },
+          "403": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/commentsRate/{id}": {
+      "post": {
+        "tags": [
+          "Trilhas"
+        ],
+        "summary": "Comentando & Avaliando by id",
+        "description": "Irá comentar & Avaliar as trilhas passando o parâmetro id",
+        "operationId": "commentsRate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id da trilha que será comentada | Avaliada"
+          },
+          {
+            "in": "body",
+            "name": "Trilha",
+            "description": "Realizando comentário | Avaliando a trilha",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comentarios": {
+                  "type": "string"
+                },
+                "avaliacao": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Trilha não cadastrada!"
+          },
+          "200": {
+            "description": "Comentário adicionado com sucesso!"
+          },
+          "500": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/createTrilha/{idAdm}": {
+      "post": {
+        "tags": [
+          "Trilhas"
+        ],
+        "summary": "Criando uma trilha",
+        "description": "EndPoint exclusivo para adm, responsável por criar uma trilha",
+        "operationId": "createTrilha",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm que criará a trilha"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Criando uma trilha",
+            "schema": {
+              "$ref": "#/definitions/Trilhas"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Usuário Adm não está cadastrado!"
+            
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+            
+          },
+          "200": {
+            "description": "Trilha adicionado com sucesso!"
+          },
+          "500": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/updateTrilha/{idAdm}/{id}": {
+      "put": {
+        "tags": [
+          "Trilhas"
+        ],
+        "summary": "Atualizando uma trilha",
+        "description": "EndPoint exclusivo para adm, responsável por atualizar uma trilha",
+        "operationId": "updateTrilha",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id da trilha que será atualizada"
+          },
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Realizando atualização da trilha",
+            "schema": {
+              "$ref": "#/definitions/Trilhas"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Usuário Adm não está cadastrado!"
+            
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+            
+          },
+          "200": {
+            "description": "Trilha atualizado com sucesso!"
+          },
+          "500": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/deleteTrilha/{idAdm}/{id}": {
+      "delete": {
+        "tags": [
+          "Trilhas"
+        ],
+        "summary": "Deletando uma trilha",
+        "description": "EndPoint exclusivo para adm responsável por deletar uma trilha",
+        "operationId": "deleteTrilha",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id da trilha que será deletada"
+          },
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Usuário Adm não está cadastrado!"
+            
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+            
+          },
+          "200": {
+            "description": "Trilha excluída com sucesso!"
+          },
+          "500": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/allUser/{idAdm}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Mostrando todos os usuários",
+        "description": "EndPoint responsáel por mostrar todos os usuários existentes no banco",
+        "operationId": "allUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Usuário Adm não está cadastrado!"
+            
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+            
+          },
+          "200": {
+            "description": "Retorna todos os usuários",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/byUser/{idAdm}/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Mostrando Usuário by id",
+        "description": "EndPoint responsáel por mostrar  os usuários existentes no banco by id",
+        "operationId": "byUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id do usuário que será localizada"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Usuário Adm não está cadastrado!"
+            
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+            
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/createUser/{idAdm}": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Criando um usuário",
+        "description": "EndPoint exclusivo para adm responsável por criar um usuário",
+        "operationId": "createUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm que criará um usuário"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "criando um usuário",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário adicionado com sucesso!"
+          },
+          "404":{
+            "description": "Usuário Adm não está cadastrado!"
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+          },
+          "500": {
+            "description": "Erro"
+          }
+        }
+      }
+    },
+    "/updateUser/{idAdm}/{id}": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Atualizando um usuário",
+        "description": "EndPoint exclusivo para adm responsável por atualizar um usuário",
+        "operationId": "updateUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id do usuário que será atualizada"
+          },
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Realizando atualização do usuário",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Atualizado com sucesso!"
+          },
+          "404":{
+            "description": "Usuário Adm não está cadastrado!"
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+          }
+        }
+      }
+    },
+    "/deleteUser/{idAdm}/{id}": {
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Deletando uma trilha",
+        "description": "EndPoint exclusivo para adm responsável por deletar um usuário",
+        "operationId": "deleteUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Id do usuário que será deletado"
+          },
+          {
+            "in": "path",
+            "name": "idAdm",
+            "required": true,
+            "type": "string",
+            "description": "Id do adm"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário excluído com sucesso!"
+          },
+          "404":{
+            "description": "Usuário Adm não está cadastrado!"
+          },
+          "403": {
+            "description": "Precisa ser Adm para executar essa ação!"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Trilhas": {
+      "type": "object",
+      "required": [
+        "nomeTrilha",
+        "regiao",
+        "pontoPartida",
+        "diasAventura",
+        "km",
+        "nivelDificuldade",
+        "preco"
+      ],
+      "properties": {
+        "nomeTrilha": {
+          "type": "string"
+        },
+        "regiao": {
+          "type": "string"
+        },
+        "pontoPartida": {
+          "type": "string"
+        },
+        "diasAventura": {
+          "type": "string"
+        },
+        "km": {
+          "type": "string"
+        },
+        "nivelDificuldade": {
+          "type": "string"
+        },
+        "preco": {
+          "type": "number"
+        },
+        "comentarios": {
+          "type": "string"
+        },
+        "avaliacao": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "login",
+        "password"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "adm": {
+          "type": "boolean",
+          "default": false
+        },
+        "dateRegister": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
