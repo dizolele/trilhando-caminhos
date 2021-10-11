@@ -70,7 +70,7 @@ module.exports = {
             trilhaDb.avaliacao.unshift(req.body.avaliacao)
 
             await trilhaDb.save()
-            res.status(200).json({message: "Comentério adicionado com sucesso!"})
+            res.status(200).json({message: "Comentário adicionado com sucesso!"})
      
         }catch(error){
             res.status(500).json({error:error.message})

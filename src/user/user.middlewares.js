@@ -28,7 +28,7 @@ module.exports = {
             if(idAdmDb){
                 next()
             } else{
-                res.status(403).json({error: "Usuário Adm não está cadastrado!"})
+                res.status(404).json({error: "Usuário Adm não está cadastrado!"})
                
             }
 
