@@ -2,7 +2,7 @@
 desponibilizar uma API que execute as funções de CRUD de trilhas. 
 
 ## Projeto de conclusão do curso de back-end - TOTI
-<p align="center">Com base o curso que efetuamos, este projeto baseia-se em criar uma API de trilhas, que seje capaz de executar os métodos de 
+<p align="center">O projeto baseia-se em criar uma API de trilhas, que seje capaz de executar os métodos de 
 Create Read Update e Delete que será disponibilizada para o gestor de sites de trilhas, e para um possível usuário final que consiga ler as trilhas e avaliar </p>
 
 ## Contruição de uma api para realização do crud
@@ -71,15 +71,6 @@ nosso servidor com o banco de dados</p>
   - [ ] Atualizar as trilhas
   - [ ] Deletar as trilhas 
 
-
-### Features
-<!--ts-->
-- [x] Criar trilhas 
-- [ ] Listar todas as trilhas 
-- [ ] Listar trilhas específicas 
-- [ ] Atualizar as trilhas 
-- [ ] Deletar as trilhas 
-<!--te-->
 
 ### Pré-requisitos
 Após clonar o repositório executar
