@@ -17,6 +17,7 @@ Tecnologias usadas
   * Mongoose
   * Dotenv
   * Nodemon
+  * swagger-ui-express
  <!--te-->
  
  <h1 align="center">
@@ -56,6 +57,12 @@ nosso servidor com o banco de dados</p>
  </h1>
  
  <p align="center">usamos esta ferramenta que, ajuda a desenvolver aplicativos baseados em node.js, reiniciando automaticamente o aplicativo de nó quando mudanças de arquivo no diretório são detectadas, foi salva como dependência do desenvolvedor</p>
+ 
+ <h1 align="center">
+ <a href="https://www.npmjs.com/package/swagger-ui-express">swagger-ui-express</a>
+</h1>
+
+<p align="center">Usamos este módulo para fazer a documentação da nossa API, gerados automaticamente a partir do Express, com base em um swagger.json arquivo. O resultado é uma documentação viva para nossa API hospedada em nosso servidor de API por meio de uma rota.</p>
  
  ### Funcionalidades da api
   - [x] Listar todas as trilhas
