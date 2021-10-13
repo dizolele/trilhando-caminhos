@@ -3,11 +3,8 @@ const routers = express.Router()
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('../../swagger.json')
 
-
-routers.use('/api-docs', swaggerUi.serve);
-
-routers.get('/api-docs', swaggerUi.setup(swaggerDocument));
-
+// routers.use('/docs', swaggerUi.serve);
+// routers.get('/docs', swaggerUi.setup(swaggerDocument));
 
 const userMiddleware    = require('./user.middlewares')
 const controllersUser   = require('./user.controllers')
@@ -16,8 +13,10 @@ const trilhasMiddleware    = require('../trilhas/trilhas.middlewares')
 
 
 //Definindo rota para a documentação
-routers.use('/docs', swaggerUi.serve);
-routers.get('/docs', swaggerUi.setup(swaggerDocument));
+routers.use('/api-docs', swaggerUi.serve);
+routers.get('/api-docs', swaggerUi.setup(swaggerDocument));
+
+
 
 
 //           ####### Permissões para todos os Usuário #######

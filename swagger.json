@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-      "description": "Documentação da API trilhando caminho",
+      "description": "Documentação da API trilhando caminho para solicitar um acesso adm entrar em contato no link abaixo",
       "version": "1.0.0",
       "title": "Trilhando Caminho",
       "contact": {
