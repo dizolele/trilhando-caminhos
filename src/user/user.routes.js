@@ -3,8 +3,7 @@ const routers = express.Router()
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('../../swagger.json')
 
-// routers.use('/docs', swaggerUi.serve);
-// routers.get('/docs', swaggerUi.setup(swaggerDocument));
+
 
 const userMiddleware    = require('./user.middlewares')
 const controllersUser   = require('./user.controllers')
